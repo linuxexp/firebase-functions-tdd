@@ -29,3 +29,9 @@ firebase --project angular-firebase-tdd experimental:functions:shell < local.js
 ## Unit Testing
 
 `npm test`
+
+## Usage
+
+You can obviously use it as a standalone, isolated project or can integrate it with existing or new project i.e submodule
+
+For example see my `angular-firebase-tdd` repo
