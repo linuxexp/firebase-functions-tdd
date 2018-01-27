@@ -6,6 +6,7 @@ const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
 
+// see example front-end app, on how it's being consumed.
 exports.addWelcome = functions.auth.user().onCreate(event => {
     const user = event.data;
     console.log('A new user signed in for the first time.');
@@ -17,9 +18,10 @@ exports.addWelcome = functions.auth.user().onCreate(event => {
     }).then(() => console.log('Welcome message written to database.'));
 });
 
+// example function used for Unit testing example
 exports.makeUppercase = functions.database.ref('/messages/{pushId}/original').onCreate(event => {
-    const original = event.data.val()
+    const original = event.data.val();
     console.log('Uppercasing', event.params.pushId, original)
-    const uppercase = original.toUpperCase()
+    const uppercase = original.toUpperCase();
     return event.data.ref.parent.child('uppercase').set(uppercase)
 });
